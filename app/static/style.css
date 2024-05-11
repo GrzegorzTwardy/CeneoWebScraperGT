@@ -1,3 +1,47 @@
-h1 {
-    color: chocolate;
+header {
+    padding: 4vh;
+    /* background-color: rgb(19, 20, 30); */
+    background-color: rgb(49, 54, 63);
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgb(27, 28, 42); */
+    background-color: rgb(34, 40, 49);
+    font-size: 18px;
+}
+
+h1 {
+    font-size: 32px;
+    color: white;
+}
+
+#content-section {
+    /* min-height: 160px; */
+    min-height: 85vh;
+    padding: 7vh 10vh 7vh 10vh;
+    flex: 1 0 auto;
+    color: rgb(227, 227, 227);
+}
+
+.footer {
+    position: sticky;
+    width: 100%;
+    bottom: 0;
+    margin-top: 100px;
+    padding: 10vh 0 10vh 0;
+    flex-shrink: 0;
+    /* background-color:rgb(15, 16, 24); */
+    background-color: rgb(20, 24, 30);
+    color: rgb(153, 153, 153);
+    font-size: 18px;
+}
+
+.test {
+    color: white
+}
+
+/* .main-section {
+    height: 120%;
+} */
