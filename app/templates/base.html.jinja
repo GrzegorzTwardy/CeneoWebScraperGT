@@ -11,6 +11,20 @@
 <body>
     <header>
         <h1>Ceneo.pl Web Scraper</h1>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="{{url_for('index')}}">Strona główna</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('extract')}}">Ekstrakcja opinii</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('products')}}">Lista produktów</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('author')}}">O autorze</a>
+            </li>
+        </ul>
     </header>
     <section id="content-section">
         {% block content %}

@@ -1,13 +1,14 @@
 header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     padding: 4vh;
-    /* background-color: rgb(19, 20, 30); */
     background-color: rgb(49, 54, 63);
 }
 
 body {
     display: flex;
     flex-direction: column;
-    /* background-color: rgb(27, 28, 42); */
     background-color: rgb(34, 40, 49);
     font-size: 18px;
 }
@@ -18,21 +19,17 @@ h1 {
 }
 
 #content-section {
-    /* min-height: 160px; */
     min-height: 85vh;
-    padding: 7vh 10vh 7vh 10vh;
+    margin: 7vh 10vh 7vh 10vh;
     flex: 1 0 auto;
     color: rgb(227, 227, 227);
 }
 
 .footer {
-    position: sticky;
     width: 100%;
     bottom: 0;
-    margin-top: 100px;
+    margin-top: 50px;
     padding: 10vh 0 10vh 0;
-    flex-shrink: 0;
-    /* background-color:rgb(15, 16, 24); */
     background-color: rgb(20, 24, 30);
     color: rgb(153, 153, 153);
     font-size: 18px;
@@ -42,6 +39,30 @@ h1 {
     color: white
 }
 
-/* .main-section {
-    height: 120%;
+.navbar-nav {
+    margin-left: 5vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-link{
+    margin: 0 2vh 0 2vh;
+    color: rgb(173, 173, 173);
+}
+
+/* .nav-link:hover{
+    
 } */
+
+.active{
+    color: white !important; 
+}
+
+.form-text {
+    color: white;
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 5vh;
+}
