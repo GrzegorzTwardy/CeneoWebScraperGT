@@ -1,13 +1,21 @@
 {% extends "base.html.jinja" %}
-{% block content %}
+{% block title%}
     <h2>Ekstrakcja opinii</h2>
+{% endblock title%}
+{% block content %}
+    {% if error is defined%}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong><i class="bi bi-exclamation-circle-fill"></i>Uwaga!</strong> {{error}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
     <form method="POST" action="{{url_for('extract')}}" class="container text-start">
         <div class="row g-3 align-items-center">
             <div class="col-auto">
                 <label for="product_id" class="col-form-label">Kod produktu z Ceneo.pl:</label>
             </div>
             <div class="col-auto">
-                <input type="text" name="product_id" id="product_id" class="form-control" aria-describedby="product_idHelpInline" placeholder="Podaj kod produktu">
+                <input type="text" name="product_id" id="product_id" class="form-control" aria-describedby="product_idHelpInline" placeholder="Podaj kod produktu" required>
             </div>
             <div class="col-auto">
                 <span id="product_idHelpInline" class="form-text">
