@@ -62,8 +62,17 @@ h2 {
     margin-bottom: 5vh;
 }
 
-form.container {
+p {
+    font-size: 18px;
+}
+
+.content-container {
     margin-left: 20px;
+    padding-left: 0;
+}
+
+form.container {
+    margin-left: 0;
     padding-left: 0;
 }
 

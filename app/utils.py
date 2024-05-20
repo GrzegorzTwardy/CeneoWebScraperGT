@@ -32,4 +32,4 @@ def extract(ancestor, selector=None, attribute=None, return_list=False):
         
     if attribute:
         return ancestor[attribute].strip()
-    return ancestor.text.strip()
+    return ancestor.text.strip()    

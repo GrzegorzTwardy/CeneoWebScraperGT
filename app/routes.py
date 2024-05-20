@@ -49,7 +49,7 @@ def extract():
                         os.mkdir('app/data/opinions')
                     with open(f'app/data/opinions/{product_id}.json', 'w', encoding='utf=8') as jf: #json file
                         json.dump(all_opinions, jf, indent=4, ensure_ascii=False)
-                opinions = pd.Dataframe.from_dict(all_opinions)
+                opinions = pd.DataFrame.from_dict(all_opinions)
 
                 return redirect(url_for('product', product_id=product_id))
             return render_template('extract.html.jinja', error='Produkt o podanym kodzie nie ma opinii.')
