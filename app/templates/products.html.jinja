@@ -3,5 +3,27 @@
     <h2>Lista produktów</h2>
 {% endblock title%}
 {% block content %}
-    {{products}}
+    <table class="product-list">
+        <tr>
+            <th class="left-cell">Nazwa</th>
+            <th>Opinie</th>
+            <th>Zalety</th>
+            <th>Wady</th>
+            <th>Ocena</th>
+            <th class="right-cell">Plik</th>
+        </tr>
+        {% for product in products %}
+            <tr class="spacer"></tr>
+            <tr class="product-row">
+                <td class="left-cell"><a href="{{ url_for('product', product_id=product.product_id) }}" class="product-name">{{ product.product_name }}</a></td>
+                <td>{{ product.opinions_count }}</td>
+                <td class="pros">{{ product.pros_count }}</td>
+                <td class="cons">{{ product.cons_count }}</td>
+                <td>{{ product.avg_rating }}/5</td>
+                <td class="download-cell right-cell">
+                    <button class="btn btn-primary" onclick="location.href='{{ url_for('download_json', product_id=product.product_id) }}'" type="button">JSON</button>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock content %}

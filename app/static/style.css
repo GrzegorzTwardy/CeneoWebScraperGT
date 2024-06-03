@@ -119,3 +119,63 @@ input.form-control:-webkit-autofill:focus {
     border-color: rgb(17, 161, 79) !important;
     color: rgb(232, 232, 232) !important;
 }
+
+.product-list {
+    width: 98%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.product-list tr {
+    border: 0px;
+    border-radius: 20px;
+}
+
+tr.product-row {
+    box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.06);
+}
+
+.product-list th, .product-list td {
+    padding: 2vh;
+}
+
+.product-list th {
+    background-color: rgb(26, 31, 38);
+    font-weight: bold;
+}
+
+.product-list td {
+    background-color: rgba(66, 76, 89, 0.2);
+}
+
+.download-cell{
+    text-align: right;
+}
+
+.download-cell button{
+    width: 100%;
+}
+
+.left-cell{
+    border-radius: 10px 0 0 10px;
+}
+
+.right-cell{
+    border-radius: 0 10px 10px 0;
+}
+
+.spacer {
+    height: 20px;
+}
+
+a.product-name {
+    margin: 0;
+    color: white;
+    text-decoration: none;
+}
+
+.product-name:hover{
+    cursor: pointer;
+    color:rgb(191, 191, 191);
+    transition: 0.2s;
+}
