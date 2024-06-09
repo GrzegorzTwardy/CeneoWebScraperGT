@@ -131,7 +131,7 @@ input.form-control:-webkit-autofill:focus {
     border-radius: 20px;
 }
 
-tr.product-row {
+.product-list tr.product-row {
     box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.06);
 }
 
@@ -156,26 +156,90 @@ tr.product-row {
     width: 100%;
 }
 
-.left-cell{
+.product-list .left-cell{
     border-radius: 10px 0 0 10px;
 }
 
-.right-cell{
+.product-list .right-cell{
     border-radius: 0 10px 10px 0;
 }
 
-.spacer {
+.product-list .spacer {
     height: 20px;
 }
 
-a.product-name {
+.product-list a.product-name {
     margin: 0;
     color: white;
     text-decoration: none;
 }
 
-.product-name:hover{
+.product-list .product-name:hover{
     cursor: pointer;
     color:rgb(191, 191, 191);
     transition: 0.2s;
+}
+
+.desc-container {
+    margin: 2vh 0 2vh 0;
+    width: 99%;
+}
+
+.filter-column {
+    text-align: right;
+}
+
+.opinion-list {
+    width: 98%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.opinion-list tr {
+    border: 0px;
+    border-radius: 20px;
+}
+
+.opinion-list tr.opinion-row {
+    box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.02);
+}
+
+.opinion-list th, .opinion-list td {
+    padding: 25px;
+}
+
+.opinion-list td{
+    text-align: left;
+    background-color: rgb(235, 237, 240);
+    color: black;
+    font-size: 17px;
+    font-weight: 500;
+    min-width: 9.09%;
+}
+
+.opinion-list th {
+    background-color: rgb(21, 25, 31);
+    font-weight: bold;
+}
+
+.opinion-list .spacer {
+    height: 30px;
+}
+
+.opinion-list .left-cell{
+    border-radius: 10px 0 0 10px;
+}
+
+.opinion-list .right-cell{
+    border-radius: 0 10px 10px 0;
+}
+
+.opinion-list a {
+    margin: 0;
+    color: rgb(235, 235, 235);
+    text-decoration: none;
+}
+
+.content-cell {
+    max-width: 550px;
 }

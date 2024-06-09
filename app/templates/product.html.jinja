@@ -1,7 +1,74 @@
 {% extends "base.html.jinja" %}
 {% block title%}
-    <h2>Produkt {{product_id}}</h2>
+    <h2>{{prod_name}}</h2>
 {% endblock title%}
 {% block content %}
-    <p>To jest strona z opiniami o produkcie {{product_id}}.</p>
+    <div class="desc-container container-flex">
+        <div class="row" style="width: 100%;">
+            <div class="col-6">
+                <p>Opinie:</p>
+            </div>
+            <div class="col-6">
+                <div class="dropdown filter-column">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sortuj
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li class="left-cell"><a class="dropdown-item" href="?sort=id">Id</a></li>
+                        <li><a class="dropdown-item"  href="?sort=author">Autor</a></li>
+                        <li><a class="dropdown-item"  href="?sort=recommendation">Czy Poleca</a></li>
+                        <li><a class="dropdown-item"  href="?sort=rating">Ocena</a></li>
+                        <li><a class="dropdown-item"  href="?sort=content">Treść</a></li>
+                        <li><a class="dropdown-item"  href="?sort=pros">Zalety</a></li>
+                        <li><a class="dropdown-item"  href="?sort=cons">Wady</a></li>
+                        <li><a class="dropdown-item"  href="?sort=useful">Pożyteczna</a></li>
+                        <li><a class="dropdown-item"  href="?sort=useless">Niepożyteczna</a></li>
+                        <li><a class="dropdown-item"  href="?sort=publish-date">Data Publikacji</a></li>
+                        <li class="right-cell"><a class="dropdown-item" href="?sort=purchase-date">Data Zakupu</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-container">
+        <table class="opinion-list" id="sortTable">
+            <tr class="opinion-row">
+                <th class="left-cell">Id</th>
+                <th>Autor</th>
+                <th>Czy Poleca</th>
+                <th>Ocena</th>
+                <th>Treść</th>
+                <th>Zalety</th>
+                <th>Wady</th>
+                <th>Pożyteczna</th>
+                <th>Niepożyteczna</th>
+                <th>Data Publikacji</th>
+                <th class="right-cell">Data Zakupu</th>
+            </tr>
+            {% for opinion in opinions %}
+                <tr class="spacer"></tr>
+                <tr class="opinion-row">
+                    <td class="left-cell">{{ opinion.opinion_id }}</td>
+                    <td>{{ opinion.author }}</td>
+                    <td>{{ opinion.recommendation }}</td>
+                    <td>{{ opinion.rating }}</td>
+                    <td class="content-cell">{{ opinion.content }}</td>
+                    <td>
+                        {% for pros in opinion.pros %}
+                            <p>{{ pros }}</p>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for cons in opinion.cons %}
+                            <p>{{ cons }}</p>
+                        {% endfor %}
+                    </td>
+                    <td>{{ opinion.useful }}</td>
+                    <td>{{ opinion.useless }}</td>
+                    <td>{{ opinion.publish_date }}</td>
+                    <td class="right-cell">{{ opinion.purchase_date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock content %}

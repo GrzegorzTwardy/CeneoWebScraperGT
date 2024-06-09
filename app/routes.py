@@ -6,9 +6,10 @@ import io
 import json
 import pandas as pd
 import numpy as np
+from datetime import datetime
 from bs4 import BeautifulSoup
 from matplotlib import pyplot as plt
-from flask import render_template, request, redirect, url_for, send_file
+from flask import render_template, request, redirect, url_for, send_file, jsonify
 
 @app.route('/')
 def index():
@@ -59,7 +60,7 @@ def extract():
                     'opinions_count': len(opinions),
                     'pros_count': int(opinions.pros.astype(bool).sum()),
                     'cons_count': int(opinions.cons.astype(bool).sum()),
-                    'avg_rating': opinions.rating.mean(),
+                    'avg_rating': round(opinions.rating.mean(), 1),
                     'rating_distribution': opinions.rating.value_counts().reindex(np.arange(0,5.2,0.5), fill_value = 0).to_dict(),
                     'recommendation_distribution' : opinions.recommendation.value_counts(dropna=False).reindex(['Polecam', 'Nie polecam', None]).to_dict()
                 }
@@ -89,7 +90,41 @@ def author():
 
 @app.route('/product/<product_id>')
 def product(product_id):
-    return render_template('product.html.jinja', product_id=product_id)
+    opinions = {}
+    prod_name = ''
+    sort_by = request.args.get('sort', default='id')
+    
+    with open(f'app/data/products/{product_id}.json', 'r', encoding='utf=8') as jf: #json file
+        tmp = json.load(jf)
+        prod_name = tmp['product_name']
+        
+    with open(f'app/data/opinions/{product_id}.json', 'r', encoding='utf=8') as jf: #json file
+        opinions = json.load(jf)
+    
+    if sort_by == 'id':
+        opinions = sorted(opinions, key=lambda x: int(x['opinion_id']))
+    elif sort_by == 'author':
+        opinions = sorted(opinions, key=lambda x: x['author'])
+    elif sort_by == 'recommendation':
+        opinions = sorted(opinions, key=lambda x: x['recommendation'])
+    elif sort_by == 'rating':
+        opinions = sorted(opinions, key=lambda x: float(x['rating'].replace(',', '.').split('/')[0]), reverse=True)
+    elif sort_by == 'content':
+        opinions = sorted(opinions, key=lambda x: len(x['content']), reverse=True)
+    elif sort_by == 'pros':
+        opinions = sorted(opinions, key=lambda x: len(x['pros']), reverse=True)
+    elif sort_by == 'cons':
+        opinions = sorted(opinions, key=lambda x: len(x['cons']), reverse=True)
+    elif sort_by == 'useful':
+        opinions = sorted(opinions, key=lambda x: int(x['useful']), reverse=True)
+    elif sort_by == 'useless':
+        opinions = sorted(opinions, key=lambda x: int(x['useless']), reverse=True)
+    elif sort_by == 'publish-date':
+        opinions = sorted(opinions, key=lambda x: datetime.strptime(x['publish_date'], '%Y-%m-%d %H:%M:%S'))
+    elif sort_by == 'purchase-date':
+        opinions = sorted(opinions, key=lambda x: datetime.strptime(x['purchase_date'], '%Y-%m-%d %H:%M:%S'))
+    
+    return render_template('product.html.jinja', opinions=opinions, prod_name=prod_name, product_id=product_id)
 
 @app.route('/product/download_json/<product_id>')
 def download_json(product_id):
